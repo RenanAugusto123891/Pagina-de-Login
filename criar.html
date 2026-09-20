@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de Conta</title>
+    <script src="https://kit.fontawesome.com/537c39df00.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="criar.css">
+</head>
+<body>
+    <main class="criaçao">
+      <form id="contanova" novalidate>
+        <h1>Criar conta nova</h1>
+        <div class="icons">
+               <div class="icon"><i class="fa-brands fa-google fa-xl"></i></div>
+               <div class="icon"><i class="fa-brands fa-facebook-f fa-xl"></i></div>
+               <div class="icon"><i class="fa-brands fa-github fa-xl"></i></div>
+               <div class="icon"><i class="fa-brands fa-linkedin-in fa-xl"></i></div>
+            </div>
+        <div class="nome">
+          <input type="Nome"  placeholder="Nome" id="nome" class="formulario">
+          <div id="erronome"></div>
+        </div>
+        <div class="nome">
+            <input type="email"  id="email" placeholder="Email" class="formulario">
+            <div id="erroemail"></div>
+        </div>
+        <div class="nome">
+            <input type="password" id="senha" placeholder="Senha" class="formulario">
+            <div id="errosenha"></div>
+        </div>
+        <div class="criar">
+            <button type="submit" id="nova" disabled >CRIAR CONTA</button>
+        </div>
+        <div class="voltar">
+            <a href="index.html"><button id="voltar" type="button">VOLTAR</button></a>
+        </div>
+      </form>
+    </main>
+    <script>
+        const email = document.querySelector('#email')
+        const senha = document.querySelector('#senha')
+        const nome  = document.querySelector('#nome')
+        const contanova = document.querySelector('#contanova')
+        const erronome = document.querySelector('#erronome')
+        const erroemail = document.querySelector('#erroemail')
+        const errosenha = document.querySelector('#errosenha')
+        const botao = document.querySelector('#nova')
+        contanova.addEventListener("submit", function(event){
+            event.preventDefault()
+        if (senha.value.length < 6){
+            errosenha.textContent = "A senha dever ter pelo menos 6 caracteres!"
+        }
+        else{
+            errosenha.textContent = ""
+        }
+
+          if (!email.value.includes("@gmail")){
+             erroemail.textContent = "O email deve conter @gmail!"
+             return;
+          }
+          else {
+                erroemail.textContent = ""
+             }
+        })
+
+        email.addEventListener("input", verificarCampos);
+        senha.addEventListener("input", verificarCampos);
+        verificarCampos();
+
+        function verificarCampos(){
+            if(nome.value === "" || email.value === "" || senha.value === ""){
+              botao.disabled = true;
+              botao.style.backgroundColor = "rgba(137, 43, 226, 0.624)";
+            }
+            else{
+                botao.disabled = false;
+                botao.style.backgroundColor = "blueviolet";
+            }
+        }
+    </script>
+</body>
+</html>
