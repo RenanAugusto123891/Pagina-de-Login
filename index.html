@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     <script src="https://kit.fontawesome.com/537c39df00.js" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <main class="Login">
+       <form id="login" novalidate>
+        <h1 class="h1entrar">Entrar</h1>
+         <div class="icons">
+               <div class="icon"><i class="fa-brands fa-google fa-xl"></i></div>
+               <div class="icon"><i class="fa-brands fa-facebook-f fa-xl"></i></div>
+               <div class="icon"><i class="fa-brands fa-github fa-xl"></i></div>
+               <div class="icon"><i class="fa-brands fa-linkedin-in fa-xl"></i></div>
+            </div>
+            <div class="email">
+                <input type="email"  id="email" placeholder="Email">
+                <div id="erroemail"></div>
+            </div>
+            <div class="senha">
+                <input type="password" id="senha" placeholder="Senha">
+                <div id="errosenha"></div>
+            </div>
+            <a href="#" class="esqueceu">Esqueceu a senha?</a>
+            <div class="Entrar">
+                <button type="submit" id="entrar" disabled >ENTRAR</button>
+            </div>
+            <div class="criar">
+            <a href="criar.html"><button  type="button" id="criar">CRIAR CONTA</button></a>
+        </div>
+       </form>
+    </main>
+    <script>
+        const login = document.querySelector('#login')
+        const email = document.querySelector('#email')
+            const senha = document.querySelector('#senha')
+            const errosenha = document.querySelector('#errosenha')
+            const erroemail = document.querySelector('#erroemail')
+            const botao = document.querySelector('#entrar')
+        login.addEventListener("submit", function(event){
+            event.preventDefault()
+             if (!email.value.includes("@gmail")){
+            erroemail.textContent = "O email precisa conter @!"
+             }
+             else{
+                erroemail.textContent =""
+             }
+             if (senha.value.length < 6){
+                errosenha.textContent = "A senha dever ter pelo menos 6 caracteres!"
+             }
+             else{
+                errosenha.textContent = ""
+             }
+        })
+     
+function verificarCampos() {
+    if (email.value === "" || senha.value === "") {
+        botao.disabled = true;
+        botao.style.backgroundColor = "rgba(137, 43, 226, 0.624)";
+    } else {
+        botao.disabled = false;
+        botao.style.backgroundColor = "blueviolet";
+    }
+}
+
+email.addEventListener("input", verificarCampos);
+senha.addEventListener("input", verificarCampos);
+
+verificarCampos();
+      
+    </script>
+</body>
+</html>
