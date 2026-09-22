@@ -127,15 +127,14 @@ html{
     color: red;
     margin: 0px;
 }
-@media (max-width: 760px) {
-    #bem-vindo { border-radius: 10px 10px 0 0; }
-    #login { border-radius: 0 0 10px 10px; }
-}
-
 #email:focus,
 #senha:focus { 
     outline: none;
     border: 2px solid blueviolet;
 }/*O :focus significa: quando o usuário estiver com o cursor naquele campo.*/
+
+
+
+
 
 
